@@ -27,7 +27,7 @@ require_once __DIR__ . '/partials/header.php';
     </div>
     <?php endif; ?>
 
-    <form class="space-y-4" method="post" action="/registrar">
+    <form class="space-y-4" method="post" action="/register">
         <input type="hidden" name="tipo" id="tipo-conta" value="aluno">
 
         <div>

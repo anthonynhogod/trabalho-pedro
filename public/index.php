@@ -49,10 +49,40 @@ switch ($route) { // *** ATENÇÃO: Agora usa $route em vez de $request_uri ***
         require_login();
         require __DIR__ . '/../templates/main-aluno.php';
         break;
-        
+
     case '/main-professor':
         require_login();
         require __DIR__ . '/../templates/main-professor.php';
+        break;
+
+    case '/turmas':
+        require_login();
+        require __DIR__ . '/../templates/turmas.php';
+        break;
+    
+    case '/turma_detalhes':
+        require_login();
+        require __DIR__ . '/../templates/turma_detalhes.php';
+        break;
+
+    case '/presencas-aluno':
+        require_login();
+        require __DIR__ . '/../templates/presencas-aluno.php';
+        break;
+
+    case '/presencas':
+        require_login();
+        require __DIR__ . '/../templates/presencas.php';
+        break;
+
+    case '/aulas':
+        require_login();
+        require __DIR__ . '/../templates/aulas.php';
+        break;    
+    
+    case '/aulas-aluno':
+        require_login();
+        require __DIR__ . '/../templates/aulas-aluno.php';
         break;
 
     case '/logout':

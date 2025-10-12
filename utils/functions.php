@@ -5,22 +5,24 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
-/**
- * Redireciona para uma URL.
- * @param string $url A URL para redirecionar.
- */
-function redirect($url) {
-    header("Location: $url");
-    exit();
+function require_login() {
+    // A sessão deve ser iniciada antes de chamar esta função.
+    // Garanta que session_start() está no topo do seu index.php.
+    if (!isset($_SESSION['id'])) {
+        // Se não houver ID de usuário na sessão, redireciona para o login.
+        redirect('/login');
+        exit();
+    }
 }
 
 /**
- * Verifica se o usuário está logado. Se não, redireciona para a página de login.
+ * Redireciona o usuário para uma URL baseada na rota fornecida.
+ * @param string $path O caminho para o qual redirecionar (ex: '/login').
  */
-function require_login() {
-    if (!isset($_SESSION['user_id'])) {
-        redirect('/login');
-    }
+function redirect($path) {
+    // Calcula o caminho base da aplicação para funcionar em subdiretórios
+    $base_path = rtrim(str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']), '/');
+    header("Location: {$base_path}{$path}");
+    exit();
 }
 ?>

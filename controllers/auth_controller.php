@@ -66,10 +66,10 @@ function handle_login($pdo) {
             if ($user && password_verify($senha, $user['senha'])) {
                 // Inicia a sessão
                 session_start();
-                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['id'] = $user['id'];
                 $_SESSION['user_nome'] = $user['nome'];
-                $_SESSION['user_tipo'] = $user['tipo'];
-
+                $_SESSION['tipo'] = $user['tipo'];
+ 
                 // Redireciona com base no tipo de usuário
                 if ($user['tipo'] === 'professor') {
                     header("Location: /main-professor");
